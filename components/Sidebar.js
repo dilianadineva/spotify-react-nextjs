@@ -5,12 +5,14 @@ import { useSession } from 'next-auth/react'
 import useSpotify from '../hooks/useSpotify'
 import { useRecoilState } from 'recoil'
 import { playlistIdState } from '../atoms/playlistAtom'
+import { albumIdState } from '../atoms/albumAtom'
 
 function Sidebar() {
     const spotifyApi = useSpotify()
     const { data: session, status } = useSession()
     const [playlists, setPlaylists] = useState([])
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState)
+    const [albumId, setAlbumId] = useRecoilState(albumIdState)
     // console.log("playlist id: ", playlistId)
     useEffect(() => {
         if(spotifyApi.getAccessToken()){
@@ -21,6 +23,22 @@ function Sidebar() {
         }
 
     }, [session, spotifyApi])
+
+    const getLikedSongs = () => {
+        console.log("getting liked songs")
+        spotifyApi.getMySavedTracks({
+            limit : 40
+          })
+          .then(function(data) {
+            let likedItems = data.body.items
+            // setLikedSongs(likedItems)
+            likedItems.map(item => {
+                console.log(item.track.name, item.track.artists[0])
+            })
+          }, function(err) {
+            console.log('Something went wrong!', err);
+          });
+    }
 
     // console.log(playlists)
 
@@ -48,7 +66,7 @@ function Sidebar() {
                 </button>
                 <button className="flex items-center space-x-2  hover:text-white">
                     <HeartIcon className="h-5 w-5 text-blue-500"/>
-                <p>Liked Songs</p>
+                <p onClick={()=>{getLikedSongs()}}>Liked Songs</p>
                 </button>
                 <button className="flex items-center space-x-2 hover:text-white">
                     <RssIcon className="h-5 w-5 text-green-500"/>
@@ -60,7 +78,8 @@ function Sidebar() {
                     return (
                         <p key = {playlist.id} className="cursor-pointer hover:text-white" 
                         onClick={()=>{
-                            setPlaylistId(playlist.id)
+                            setPlaylistId(playlist.id);
+                            setAlbumId(null) //deselect album
                         }}>
                             {playlist.name}
                         </p>

@@ -1,0 +1,21 @@
+[debug] [2021-12-11T15:43:36.820Z] ----------------------------------------------------------------------
+[debug] [2021-12-11T15:43:36.823Z] Command:       C:\Users\mnyah\DOWNLO~1\firebase-tools-instant-win.exe C:\Users\mnyah\.cache\firebase\tools\lib\node_modules\firebase-tools\lib\bin\firebase init
+[debug] [2021-12-11T15:43:36.823Z] CLI Version:   9.23.1
+[debug] [2021-12-11T15:43:36.823Z] Platform:      win32
+[debug] [2021-12-11T15:43:36.823Z] Node Version:  v12.18.1
+[debug] [2021-12-11T15:43:36.824Z] Time:          Sat Dec 11 2021 17:43:36 GMT+0200 (Eastern European Standard Time)
+[debug] [2021-12-11T15:43:36.825Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-12-11T15:43:36.851Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-12-11T15:43:36.851Z] > authorizing via signed-in user (mnyaha@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\mnyah\Desktop\spotify-app\spotify-app
+

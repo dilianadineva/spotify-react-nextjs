@@ -2,7 +2,7 @@ import { ChevronDownIcon } from '@heroicons/react/outline'
 import { signOut, useSession } from 'next-auth/react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { playlistState, playlistIdState } from '../atoms/playlistAtom'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useSpotify from '../hooks/useSpotify'
 import Songs from './Songs'
 
@@ -11,6 +11,7 @@ function Center() {
     const spotifyApi = useSpotify()
     const playlistId = useRecoilValue(playlistIdState)
     const [playlist, setPlaylist] = useRecoilState(playlistState)
+    // const [likedSongs, setLikedSongs] = useState(null)
 
     useEffect(()=>{
         spotifyApi.getPlaylist(playlistId).then((data)=>{
@@ -20,7 +21,7 @@ function Center() {
         })
     }, [spotifyApi, playlistId])
     
-    console.log("playlist: ", playlist)
+    // console.log("playlist: ", playlist)
 
     return (
         <div className="flex-grow text-white col-span-full h-screen overflow-y-scroll scrollbar-hide">
